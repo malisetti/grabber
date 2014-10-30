@@ -1,0 +1,3 @@
+abbiya_grabber_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AbbiyaGrabberBundle:Default:index }

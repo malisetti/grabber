@@ -1,0 +1,8 @@
+abbiya_grabber:
+    resource: "@AbbiyaGrabberBundle/Resources/config/routing.yml"
+    prefix:   /
+
+BCCResqueBundle:
+    resource: "@BCCResqueBundle/Resources/config/routing.xml"
+    prefix:   /resque
+

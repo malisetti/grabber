@@ -1,0 +1,28 @@
+<?php
+
+namespace Abbiya\GrabberBundle\Entity;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of Asset
+ *
+ * @author seshachalam
+ */
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Abbiya\GrabberBundle\Entity\Repository\AssetRepository")
+ */
+class Asset extends Resource {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Link", inversedBy="assets", cascade={"persist"})
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    private $parent;
+}

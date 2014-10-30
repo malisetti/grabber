@@ -1,0 +1,22 @@
+parameters:
+    parse_html.class: Abbiya\GrabberBundle\Services\ParseHtml
+services:    
+    parse.html:
+        class: "%parse_html.class%"
+        calls:
+            - [setResque, ["@bcc_resque.resque"]]
+            - [setLinkRepository, ["@link_repository"]]
+        
+    link_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - Abbiya\GrabberBundle\Entity\Link
+            
+    asset_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - Abbiya\GrabberBundle\Entity\Asset

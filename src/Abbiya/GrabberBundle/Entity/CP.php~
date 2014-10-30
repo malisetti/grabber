@@ -1,0 +1,52 @@
+<?php
+
+namespace Abbiya\GrabberBundle\Entity;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of CP
+ *
+ * @author seshachalam
+ */
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="cp")
+ */
+class CP {
+    
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="text")
+     */
+    private $url;
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return CP
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+}

@@ -1,0 +1,43 @@
+<?php
+
+namespace Abbiya\GrabberBundle\Entity;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of Link
+ *
+ * @author seshachalam
+ */
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Entity(repositoryClass="Abbiya\GrabberBundle\Entity\Repository\LinkRepository")
+ */
+class Link extends Resource {
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Link", mappedBy="referringTo", cascade={"persist"})
+     **/
+    private $referredBy;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Link", inversedBy="referredBy", cascade={"persist"})
+     * @ORM\JoinTable(name="pointers",
+     *      joinColumns={@ORM\JoinColumn(name="link_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="referred_link_id", referencedColumnName="id")}
+     *      )
+     **/
+    private $referringTo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Asset", mappedBy="parent", cascade={"persist"})
+     */
+    private $assets;
+
+}
